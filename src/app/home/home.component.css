@@ -1,0 +1,13 @@
+.row {
+    
+    width: 100%;
+}
+
+.col {
+    display: flex;
+    padding: 16px;
+}
+
+.card {
+    flex: 1;
+}

@@ -7,9 +7,6 @@ import { HomeComponent } from './home/home.component';
 import { NavComponent } from './nav/nav.component';
 import { DataComponent } from './data/data.component';
 
-
-
-
 @NgModule({
   declarations: [
     AppComponent,

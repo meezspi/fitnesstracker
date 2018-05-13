@@ -1,5 +1,5 @@
-export class Data {
-    UserNames: User[];
+export class Fitness {
+    UserNames: User[] = [];
 }
 
 export class User {
@@ -16,6 +16,8 @@ export class Activity {
     Intensity: string;
     Shareable: boolean = false;
 }
+
+
 
 
 

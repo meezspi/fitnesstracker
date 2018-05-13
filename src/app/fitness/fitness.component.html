@@ -1,0 +1,39 @@
+<div class="row justify-content-center" >
+        <div class="col-md-6">
+            
+          <div class="card" >
+              <div class="card-header"> Enter Activity </div>
+              <div class="card-body">
+                  <div class="row">
+                          <div class="col">
+                                  <label for="activity">Select activity (select one):</label>
+                                  <select #Activity type="text" class="form-control" id="activity">
+                                    <option>Swimming</option>
+                                    <option>Biking</option>
+                                    <option>Running</option>
+                                    <option>Walking</option>
+                                  </select>
+                                  <input #Duration type="text" class="form-control" placeholder="Duration" />
+                                  <label for="intensity">Intensity Level:</label>
+                                  <select #Intesity type="text" class="form-control" id="intensity">
+                                    <option>Light</option>
+                                    <option>Medium</option>
+                                    <option>Intense</option>
+                                  </select> 
+                                  <div class="checkbox">
+                                        <label><input #Share type="checkbox"
+                                            ng-model = "foo"
+                                            ng-value="true" />Share with Friends</label>
+                                  </div>
+                                  <button (click)="logFitness($event,
+                                      Activity.Value, 
+                                      Duration.Value,
+                                      Intensity.value, 
+                                      Share.value)" >Enter Activity</button>
+                          </div>
+                  </div>
+              </div>
+            </div>
+            
+        </div>
+</div>

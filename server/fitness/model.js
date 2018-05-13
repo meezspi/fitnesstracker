@@ -2,7 +2,7 @@
 function Fitness() {
 
     this.UserNames = [];
-    
+
     this.login = (userId, password) => {
         if (this.UserNames.some(x=> x.Name == userId)) {
             let currentUser = this.UserNames.find(x=> x.Name == userId);
@@ -16,25 +16,27 @@ function Fitness() {
         if (this.UserNames.some(x=> x.Name == userId)){
         }
         else {
-            this.UserNames.push({
+            this.UserNames.push({ 
                 Name: userId,
                 Password: password,
                 MyFriends:[],
                 MyActivity:[]
-            });
+             });
             return { success: true };
         }
     }
  
-    this.InputFitness = (userId, activity, duration, intensity, share) => {
-        let currentUser = this.UserNames.find(x=> x.Name == userId);
-        currentUser.MyActivity.push({
-            Person: currentUser,
+    this.InputFitness = ( person, activity, duration, intensity, share) => {
+        if(this.UserNames.some(x=> x.Name == person)){
+        var currentUser = this.UserNames.find(x=> x.Name == person);
+        var newactivity = {
             Type: activity,
-            Duration: duration,
-            Intensity: intensity,
-            Shareable: share
-          });
+            Duration:duration,
+            Intensity:intensity,
+            Shareable:share
+        };
+        currentUser.MyActivity.push(newactivity);
+    }
     }
  
     this.ShareToFriends = (userId) =>  {

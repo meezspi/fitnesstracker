@@ -10,11 +10,10 @@ export class User {
 }
 
 export class Activity {
-    Person: User;
     Type: string;
     Duration: string;
     Intensity: string;
-    Shareable: boolean = false;
+    Shareable: string;
 }
 
 

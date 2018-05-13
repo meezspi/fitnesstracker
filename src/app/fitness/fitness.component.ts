@@ -28,7 +28,6 @@ export class FitnessComponent implements OnInit {
        if(!this.Me){
            _Router.navigate(['/login']);
        }
-       setInterval(() => this.refresh(), 1000);
  }
 
  ngOnInit() {
@@ -39,14 +38,16 @@ export class FitnessComponent implements OnInit {
    .subscribe(data=> this.Model = data.json())
  }
 
- logFitness(e: MouseEvent, activity:string, duration:string, intensity: string, share: boolean){
+ logFitness(e: MouseEvent, activity:string, duration:string, intensity: string, share: string){
   e.preventDefault();
-  this.http.post(this._api,
-    {User: this.Me,
+  this.http.post(this._api + "/activity",
+    {
+     Person: this.Me.Name,
      Activity: activity, 
      Duration:duration, 
      Intensity:intensity, 
      Shareable:share})
+     .subscribe();
  }
 
 

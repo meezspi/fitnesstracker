@@ -13,16 +13,16 @@ module.exports = app
     .post('/register', (req, res) => {
         res.send(fitness.register(req.body.userId, req.body.password));
     })
-    .post('/fitness', (req, res) => {
+    .post('/activity', (req, res) => {
         console.log(req.body);
         try{
             fitness.InputFitness(
-                req.body.User, 
+                req.body.Person,
                 req.body.Activity, 
                 req.body.Duration,
                 req.body.Intensity, 
                 req.body.Shareable);
-            res.send( { success: true } );
+                res.send({ success: true });
         } catch (error) {
             res.status(403).send( { success: false } )
         }

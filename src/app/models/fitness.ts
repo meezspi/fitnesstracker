@@ -13,7 +13,7 @@ export class Activity {
     Type: string;
     Duration: string;
     Intensity: string;
-    Shareable: string;
+    Shareable: boolean = false;
 }
 
 

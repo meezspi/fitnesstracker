@@ -28,18 +28,32 @@ export class FitnessComponent implements OnInit {
        if(!this.Me){
            _Router.navigate(['/login']);
        }
+       else{
+         this.http.get(this._api + "/activity", { params: {userId: this.Me.Name} })
+         .subscribe(data=> this.Me = data.json())
+       }
+
+       _Messages.Messages.push({ Text: 'Welcome ' + this.Me.Name, Type: "success" });
+       setInterval(() => this.refresh(), 1000)
  }
 
  ngOnInit() {
  }
+
 
  refresh(){
    this.http.get(this._api + "/state")
    .subscribe(data=> this.Model = data.json())
  }
 
- logFitness(e: MouseEvent, activity:string, duration:string, intensity: string, share: string){
+ quoteRefresh(){
+   this.http.get(this._api + "/activity")
+   .subscribe(data=> this.Me = data.json())
+ }
+
+ logFitness(e: MouseEvent, activity:string, duration:string, intensity: string, share: boolean){
   e.preventDefault();
+  
   this.http.post(this._api + "/activity",
     {
      Person: this.Me.Name,
@@ -48,8 +62,10 @@ export class FitnessComponent implements OnInit {
      Intensity:intensity, 
      Shareable:share})
      .subscribe();
+     this._Messages.Messages.push({ Text: 'New Activity Submitted', Type:'success'});
  }
 
-
-
 }
+
+
+

@@ -1,4 +1,3 @@
-
 function Fitness() {
 
     this.UserNames = [];
@@ -44,11 +43,16 @@ function Fitness() {
         currentUser.Shareable = true;
     }
  
-    this.MakeFriend = (userId, friendId) => {
-        var currentUser = this.UserNames.find(x=> x.Name == userId);
+    this.MakeFriend = (person, myname) => {
+        var currentUser = this.UserNames.find(x=> x.Name == myname);
+        var newFriend = this.UserNames.find(x=> x.Name == person);
         if(!currentUser.MyFriends.some(x=> x.Name == friendId)){
-            CurrentUser.MyFriends.push(x=> x.Name == friendId);
+            currentUser.MyFriends.push(newFriend);
         } 
+    }
+
+    this.GetActivity = (userId) => {
+        return this.UserNames.find(x=> x.Name == userId);
     }
  
  }

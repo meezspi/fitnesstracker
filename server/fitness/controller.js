@@ -7,6 +7,9 @@ var fitness = new Fitness();
 
 module.exports = app
     .get('/state', (req, res) => res.send(fitness))
+    .get('/activity', (req, res) => {
+        res.send(fitness.GetActivity(req.query.userId))
+    })
     .post('/login', (req, res) => {
         res.send(fitness.login(req.body.userId, req.body.password))
     })

@@ -52,11 +52,17 @@ function Fitness() {
     }
 
     this.GetActivity = (userId) => {
+        
         return this.UserNames.find(x=> x.Name == userId);
     }
 
+
     this.GetUsers = (userId) => {
         return this.UserNames.find(x=> x.Name == userId);
+    }
+
+    this.SearchUsers = (userId) => {
+        return this.UserNames.all(x=> x.Name.includes(userId));
     }
  
  }

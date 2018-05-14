@@ -13,6 +13,9 @@ module.exports = app
     .get('/friends', (req, res) => {
         res.send(fitness.GetUsers(req.query.userId))
     })
+    .get('/search', (req,res) => {
+        res.send(fitness.GetUsers(req.query.userId))
+    })
     .post('/friends', (req,res) => {
         console.log(req.body);
         try{

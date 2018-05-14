@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Http } from "@angular/http";
 import { Activity, User, Fitness } from '../models/fitness';
 import { MessagesService } from '../services/messages.service';
 import { FitnessService } from '../services/fitness.service';
 import { Router} from '@angular/router';
-
+import { Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import {NgbTypeahead} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
  selector: 'app-fitness',
@@ -30,7 +32,7 @@ export class FitnessComponent implements OnInit {
        }
        else{
          this.http.get(this._api + "/activity", { params: {userId: this.Me.Name} })
-         .subscribe(data=> this.Me = data.json())
+         .subscribe(data=> this.Model = data.json())
        }
 
        setInterval(() => this.refresh(), 1000);
@@ -38,6 +40,10 @@ export class FitnessComponent implements OnInit {
 
  ngOnInit() {
  }
+
+ @ViewChild('instance') instance: NgbTypeahead;
+ focus$ = new Subject<string>();
+ click$ = new Subject<string>();
 
 
  refresh(){
@@ -63,7 +69,15 @@ export class FitnessComponent implements OnInit {
      .subscribe();
      this._Messages.Messages.push({ Text: 'New Activity Submitted', Type:'success'});
  }
-
+ search = (text: Observable<string>) => 
+    text.pipe(
+      map(x=> x == ' ' ? []
+      : this.http.get(this._api + '/search',
+      { params: {userId: text} }
+      )
+      .subscribe() )
+    )
+ 
 }
 
 

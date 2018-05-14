@@ -9,6 +9,7 @@ import { FitnessComponent } from '../fitness/fitness.component';
 export class FitnessService {
 
    Me: User;
+
    private _api = "http://localhost:8080/fitness";
 
  constructor(private _http: Http, private _Messages: MessagesService, private _Router: Router) {

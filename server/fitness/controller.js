@@ -10,6 +10,21 @@ module.exports = app
     .get('/activity', (req, res) => {
         res.send(fitness.GetActivity(req.query.userId))
     })
+    .get('/friends', (req, res) => {
+        res.send(fitness.GetUsers(req.query.userId))
+    })
+    .post('/friends', (req,res) => {
+        console.log(req.body);
+        try{
+            fitness.MakeFriend(
+                req.body.myName,
+                req.body.newFriend);
+                res.send({ success: true });
+        } catch (error) {
+            res.status(403).send( { success: false } )
+        }
+    })
+    
     .post('/login', (req, res) => {
         res.send(fitness.login(req.body.userId, req.body.password))
     })

@@ -1,1 +1,102 @@
-<p>fitness works</p>
+<div style="margin-top:10px">
+  {{Me.Name}}'s Profile
+</div>
+<div class="row" style="margin-top:10px">
+    <div class="col-md-4">
+          <div class="card">
+              <div class="card-header"> Enter Activity </div>
+              <div class="card-body">
+                  <div class="row">
+                          <div class="col">
+                              Activity:
+                              <select #Activity type="text" class="form-control" placeholder="Activity">
+                                  <option value="Swimming">Swimming</option>
+                                  <option value="Biking">Biking</option>
+                                  <option value="Running">Running</option>
+                                  <option value="Walking">Walking</option>
+                                </select>
+                                Duration:
+                                  <input #Duration type="text" class="form-control" placeholder="Workout length" />
+                                  Intensity:
+                                  <select #Intensity type="text" class="form-control" placeholder="Intensity">
+                                      <option value="Light">Light</option>
+                                      <option value="Medium">Medium</option>
+                                      <option value="Intense">Intense</option>
+                                    </select>
+                                  Share with Friends:
+                                  <select #Share type="text" class="form-control" placeholder="Share">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                  </select>
+                                  <button style="margin-top: 10px"
+                                      (click)="logFitness($event,
+                                      Activity.value, 
+                                      Duration.value,
+                                      Intensity.value, 
+                                      Share.value)" >Enter Activity</button>
+                          </div>
+                  </div>
+              </div>
+            </div>
+          </div>  
+          <div class="col-md-8">
+              <div class="card bg-success mb-3" >
+                  <div class="card-header text-white">My Activities</div>
+                      <ul class="list-group list-group-flush ">
+                          <li *ngFor="let activity of Me.MyActivity"
+                              class="list-group-item">
+                              <div class=row>
+                                <div class=col>
+                                    {{activity.Type}}
+                                </div>
+                                <div class=col>
+                                    {{activity.Duration}}
+                                </div>
+                                <div class=col>
+                                    {{activity.Intensity}}
+                                </div>
+                              </div>
+                          </li>
+                      </ul>
+                  </div>
+      
+      </div> 
+    </div>
+    
+    <div style="margin-top:30px" class = "row">
+        <div class="col-md-4">
+            <div class="card" >
+                <div class="card-header">My Friends</div>
+                    <ul class="list-group list-group-flush ">
+                        <li *ngFor="let friend of Me.MyFriends"
+                            class="list-group-item">
+                            <div class=row>
+                              <div class=col>
+                                  {{friend.Name}}
+                              </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+    
+        </div> 
+        <div class="col-md-8">
+                <div class="card" >
+                    <div class="card-header">Friend Activity</div>
+                        <ul class="list-group list-group-flush ">
+                            <li *ngFor="let friend of Me.MyFriends"
+                                class="list-group-item">
+                                <div class=row>
+                                  <div class=col>
+                                      {{friend.Name}}
+                                  </div>
+                                  <div class=col>
+                                        {{friend.MyActivity}}
+                                    </div>  
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+        
+            </div>
+    </div>

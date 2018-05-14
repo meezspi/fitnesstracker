@@ -24,4 +24,5 @@ export class LoginComponent implements OnInit {
  register(userId: string, password: string){
    this._Fitness.register(userId, password);
  }
+
 }

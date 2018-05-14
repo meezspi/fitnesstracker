@@ -33,8 +33,7 @@ export class FitnessComponent implements OnInit {
          .subscribe(data=> this.Me = data.json())
        }
 
-       _Messages.Messages.push({ Text: 'Welcome ' + this.Me.Name, Type: "success" });
-       setInterval(() => this.refresh(), 1000)
+       setInterval(() => this.refresh(), 1000);
  }
 
  ngOnInit() {

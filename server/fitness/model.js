@@ -43,15 +43,19 @@ function Fitness() {
         currentUser.Shareable = true;
     }
  
-    this.MakeFriend = (person, myname) => {
-        var currentUser = this.UserNames.find(x=> x.Name == myname);
-        var newFriend = this.UserNames.find(x=> x.Name == person);
+    this.MakeFriend = (myName, newFriend) => {
+        var currentUser = this.UserNames.find(x=> x.Name == myName);
+        var newFriend = this.UserNames.find(x=> x.Name == newFriend);
         if(!currentUser.MyFriends.some(x=> x.Name == friendId)){
             currentUser.MyFriends.push(newFriend);
         } 
     }
 
     this.GetActivity = (userId) => {
+        return this.UserNames.find(x=> x.Name == userId);
+    }
+
+    this.GetUsers = (userId) => {
         return this.UserNames.find(x=> x.Name == userId);
     }
  
